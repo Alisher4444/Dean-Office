@@ -1,0 +1,91 @@
+body{
+	margin: 0;
+	
+}
+a{
+	text-decoration: none;
+	color:#EEEEEE;
+	left:300px;
+	font: 14px arial, sans-serif;
+	top: 13px;
+	position: relative;
+	padding-top: 19px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 19px;
+
+}
+a:hover,a:focus{
+	background-color: #26C6DA;
+
+}
+.header{
+
+	width: 1000px; 
+	height: 50px;
+	background-color: #212121;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+
+}
+
+
+@media (min-width:768px)
+{
+	.col-sm-3{float:left}
+	.col-sm-3{width:20%}
+}
+
+.col-sm-3
+{
+	margin-top: 100px;
+	position:relative;
+	left: 200px;
+	min-height:1px;
+	padding-right:15px;
+	padding-left:15px
+}
+
+
+
+.container{
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    position: relative;
+    left: 100px;
+}
+.container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card{
+	padding: 2px 16px;
+}
+
+
+/*
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    position: relative;
+
+}
+input[type=text]:focus {
+    width: 100%;
+}
+*/
+
+
+
+

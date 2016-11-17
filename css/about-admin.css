@@ -1,0 +1,113 @@
+@media (min-width:992px){
+.col-md-6-pro{float:left;}
+
+@media (min-width:768px){
+	.col-md-6-pro {
+		width: 100%;
+		
+  }
+}
+ .col-md-6-pro{
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  
+}
+}
+.header{
+	position: relative ;
+	top: 0px;
+	background:#2c3e50;
+	width: 98,5%;
+	height: 90px;
+	padding: 10px;
+	border-radius: 4px;
+
+}
+.img-responsive-pro,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  max-width: 100%;
+  float: right;
+  height: auto;
+  margin: 10px;
+  margin-right: 65px;
+  margin-top: 15px;
+  box-shadow: 2px 2px 10px #888888;
+}
+.portfolio-item-pro {
+    margin-bottom: 25px;
+}
+.about{
+	font-size: 1.61em;
+	font-family: Georgia,sans-serif;
+	font-style: italic;
+	width: 700px;
+	transform: translate(2px,150px);
+	color: #6C7A89;
+	right: 80px;
+	position: relative;
+}
+.Name{
+	position: relative;
+	top: 179px;
+	right: 29%;
+	font-size: 3rem;
+	margin: 2px;
+	color: #2C3E50;
+	
+}
+.hello{
+	text-transform: uppercase;
+	transform: translate(154px,180px);
+	color: orange;	
+	font-size: 1.2em;
+	right: 80px;
+	position: relative;
+}
+.definition{
+	margin-top: -20px;
+	margin-bottom: 550px;
+}
+.about-admin{
+	
+	width: 98,5%;
+	height: 650px;
+	padding: 10px;
+
+	margin-top:-70px;
+}
+.game_a{
+	font-weight: 600;
+	font-size: 1.3em;
+}
+.game-hobby{
+	font: italic bold 1.3em "Open sans", serif;
+	transform: translate(0px,10px);
+	color: #6C7A89;
+	margin-top: -10px;
+}
+.sport_a{
+	font-weight: 600;
+	font-size: 1.3em;
+}
+.sport-hobby{
+	margin-top: -10px;
+	font: italic bold 1.3em "Open sans", serif;
+	transform: translate(0px,10px);
+	color: #6C7A89;
+}
+.header{
+	margin-bottom: 60px;
+}
+
+.footer{
+	margin-top: 600px; 
+	height: 500px;
+	width: 100%;
+	background-color: blue;
+}
