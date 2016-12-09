@@ -1,9 +1,9 @@
 		<?php
 			include 'dbconnect.php';
-			$query = "SELECT *FROM chat2 ORDER BY id DESC";
-			$run = $con->query($query);
+			$query = "SELECT *FROM chat2 WHERE id ORDER BY id DESC";
+			$run = mysql_query($query);
 
-			while($row=$run->fetch_array()) :
+			while($row=mysql_fetch_array($run)) :
 
 		?>
 		<div id="chat_data">

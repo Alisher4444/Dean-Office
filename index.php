@@ -16,7 +16,7 @@ if(isset($_POST['SignUp']))
 	$sname = mysql_real_escape_string($_POST['second-name']);
 	$pin = mysql_real_escape_string($_POST['PIN']);
 	$gname = mysql_real_escape_string($_POST['group-name']);
-	
+
 	$uname = trim($uname);
 	$email = trim($email);
 	$upass = trim($upass);
@@ -24,15 +24,16 @@ if(isset($_POST['SignUp']))
 	$sname = trim($sname);
 	$pin = trim($pin);
 	$gname = trim($gname);
-	
+
 	$query = "SELECT user_email FROM users WHERE user_email='$email'";
 	$result = mysql_query($query);
-	
-	$count = mysql_num_rows($result); 
-	
+
+	$count = mysql_num_rows($result);
+
 	if($count == 0){
-		
-		if(mysql_query("INSERT INTO users(user_name,user_email,user_pass,first_name,sec_name,pin,group_name) VALUES('$uname','$email','$upass','$fname','$sname','$pin','$gname')"))
+
+		if(mysql_query("INSERT INTO users(user_name,user_email,user_pass,first_name,sec_name,pin,group_name) VALUES('$uname','$email','$upass','$fname','$sname',
+			'$pin','$gname')"))
 		{
 			?>
 			<script>alert('successfully registered ');</script>
@@ -44,14 +45,14 @@ if(isset($_POST['SignUp']))
 			?>
 			<script>alert('error while registering you...');</script>
 			<?php
-		}		
+		}
 	}
 	else{
 			?>
 			<script>alert('Sorry Email ID already taken ...');</script>
 			<?php
 	}
-	
+
 }
 ?>
 <!DOCTYPE html>
@@ -60,7 +61,7 @@ if(isset($_POST['SignUp']))
 	<title>Dean-office</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="css/profile.css"> 
+	<link rel="stylesheet" type="text/css" href="css/profile.css">
 	<link rel="stylesheet" type="text/css" href="">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
@@ -68,7 +69,7 @@ if(isset($_POST['SignUp']))
 
 	<div class="main-page">
 			<div class="header">
-				
+
 					<div class="links">
 						<a class="links1" href="index.php">Main page</a>
 						<a class="links2" href="">Examples</a>
@@ -76,10 +77,10 @@ if(isset($_POST['SignUp']))
 						<a class="links4" href="">Dean office</a>
 					</div>
 					<div class="login">
-						<a href="#">Sign Up</a>
+						<a href="signup.php">Sign Up</a>
 						<a href="signin.php">Sign In</a>
 					</div>
-				
+
 			</div>
 			<hr class="line">
 			<div class="logo">
@@ -87,28 +88,28 @@ if(isset($_POST['SignUp']))
 			</div>
 			<h1 class="heading" style="color:#ccc;">Welcome to the Dean Office</h1>
 			<p class="parag" style="color:#ccc;">International IT University</p>
-			<input type="button" name="button" class="btn" value="Registration">
+			<a href="signup.php"><input type="button" name="button" class="btn" value="Registration"></a>
 	</div>
 	<div class="example-page">
-		<div class="definition">	
+		<div class="definition">
 			<div class="row">
 				<div class="col-sm-3 design">
-					<img  width="40px" src="store/features-1.png">	
+					<img  width="40px" src="store/features-1.png">
 					<h2>Design</h2>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
 				</div>
 				<div class="col-sm-3 example">
-					<img width="40px" src="store/features-1.png">	
-					<h2>Applications</h2>	
+					<img width="40px" src="store/features-1.png">
+					<h2>Applications</h2>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
 				</div>
 				<div class="col-sm-3 time">
-					<img  width="40px" src="store/features-1.png">		
+					<img  width="40px" src="store/features-1.png">
 					<h2>Gain Time</h2>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
 				</div>
 				<div class="col-sm-3 aim">
-					<img  width="40px" src="store/features-1.png">		
+					<img  width="40px" src="store/features-1.png">
 					<h2>Website aim</h2>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
 				</div>
@@ -155,18 +156,17 @@ if(isset($_POST['SignUp']))
 		<div class="list">
 			<form action="index.php" method="post">
 			<input type="text" name="username" class="form id" placeholder="Your ID" required>
-			
+
 			<input type="password" name="password" class="form password" placeholder="Password" required>
-			
-			<input type="text" name="firs-name" class="form first_name" placeholder="First Name" >
-			
-			
+
+			<input type="text" name="first-name" class="form first_name" placeholder="First Name" >
+
 			<input type="text" name="second-name" class="form surname" placeholder="Second Name" >
 
 			<input type="text" name="group-name" class="form group" placeholder="Group Name" >
-			
+
 			<input type="text" name="email" class="form year" placeholder="Email" >
-			
+
 			<input type="text" name="PIN" class="form iin" placeholder="Personal Identification Number" >
 
 			<div class="roundedOne">
@@ -177,7 +177,7 @@ if(isset($_POST['SignUp']))
 			<input type="submit" name="SignUp" value="Sign Up" class="signBtn">
 
 			</form>
-			
+
 		</div>
 	</div>
 	<div class="main-footer">
@@ -195,7 +195,7 @@ if(isset($_POST['SignUp']))
 			<a href="">Blog</a>
 		</div>
 		</div>
-		
+
 		<div class="under-footer">
 			<h4 class="footer_h4">Almaty, Kazakhstan</h4>
 			<p>@Alisher Bazarkhanov | Creating New Inc.</p>
@@ -203,4 +203,3 @@ if(isset($_POST['SignUp']))
 	</div>
 </body>
 </html>
-

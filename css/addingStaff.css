@@ -1,0 +1,219 @@
+html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+@font-face{font-family:'Glyphicons Halflings';
+}
+*{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+body{
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:14px;
+	line-height:1.42857143;
+	padding: 0;
+ 	margin:0;
+ 	overflow-x:hidden;
+ 	max-height: 100%;
+ 	max-width: 100%;
+	background: url(../store/as.png) no-repeat;
+ 	background-size: cover;
+}
+
+.form{
+	position: relative;
+	left: 450px;
+	top: 0px;
+	margin-bottom: 100px;
+
+
+}
+.form input[name="username"]{
+	display:block;
+	width:20%;
+	height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	color:blue;
+	background-color:#ccc;
+	background-image:none;
+	border:2px solid #0D47A1;
+	border-radius:3px;
+	margin-bottom: 10px;
+	opacity: .6;
+	background:url(../store/perm.png) no-repeat scroll 4px 4px;
+	padding-left: 30px;
+	font-weight: 600;
+
+}
+.form input[name="iin"]{
+	display:block;
+	width:20%;
+	height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	color:blue;
+	background-color:#ccc;
+	background-image:none;
+	border:2px solid #0D47A1;
+	border-radius:3px;
+	margin-bottom: 10px;
+	opacity: .6;
+	background:url(../store/book.png) no-repeat scroll 4px 4px;
+	background-size: 24px;
+	padding-left: 30px;
+	font-weight: 600;
+
+}
+.form input[name="g_name"]{
+	display:block;
+	width:20%;
+	height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	color:blue;
+	background-color:#ccc;
+	background-image:none;
+	border:2px solid #0D47A1;
+	border-radius:3px;
+	margin-bottom: 10px;
+	opacity: .6;
+	background:url(../store/group.png) no-repeat scroll 4px 4px;
+	background-size: 24px;
+	padding-left: 30px;
+	font-weight: 600;
+
+}
+.form input[name="s_name"]{
+	display:block;
+	width:20%;
+	height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	color:blue;
+	background-color:#ccc;
+	background-image:none;
+	border:2px solid #0D47A1;
+	border-radius:3px;
+	margin-bottom: 10px;
+	opacity: .6;
+	background:url(../store/face.png) no-repeat scroll 4px 4px;
+	background-size: 24px;
+	padding-left: 30px;
+	font-weight: 600;
+
+}
+.form input[name="f_name"]{
+	display:block;
+	width:20%;
+	height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	color:blue;
+	background-color:#ccc;
+	background-image:none;
+	border:2px solid #0D47A1;
+	border-radius:3px;
+	margin-bottom: 10px;
+	opacity: .6;
+	background:url(../store/face.png) no-repeat scroll 4px 4px;
+	background-size: 24px;
+	padding-left: 30px;
+	font-weight: 600;
+
+}
+
+
+.form input[type="email"]{
+	display:block;
+	width:20%;
+	height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	color:blue;
+	background-color:#ccc;
+	background-image:none;
+	border:2px solid #0D47A1;
+	border-radius:3px;
+	margin-bottom: 10px;
+	opacity: .6;
+	background:url(../store/email.png) no-repeat scroll 4px 4px;
+	background-size: 23px;
+	padding-left: 30px;
+	font-weight: 600;
+
+}
+
+.form input[type="password"]{
+	display:block;
+	width:20%;
+	position: relative;
+	bottom: 10px;
+	height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	color:blue;
+	background-color:#ccc;
+	background-image:none;
+	border: 2px solid #0D47A1;
+	border-radius:3px;
+	margin-bottom: 10px;
+	opacity: .6;
+	background:url(../store/lock-small.png) no-repeat scroll 4px 5px;
+	background-size: 23px;
+	padding-left: 30px;
+	font-weight: 600;
+}
+
+.form input[type="submit"]{
+	position: relative;
+    background-color: rgba(255,255,255,0.1); /* Green */
+    border: none;
+    bottom: 5px;
+    color: white;
+    padding: 5px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 3px;
+    width: 215px;
+    height: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+
+.form input[type="submit"]{
+    color: #0D47A1;
+    border: 2px solid #0D47A1;
+}
+
+.form input[type="submit"]:hover{
+   background-color: #0D47A1;
+   color: white;
+}
+.logo-blue{
+	position: relative;
+	left: 65px;
+	width:150px;
+	bottom: 20px;
+
+}
+.back{
+	position: relative;
+	width: 30px;
+	height: 30px;
+	margin: 20px;
+}

@@ -59,6 +59,108 @@ $cookie_name="loggedin";
     }
     setInterval(function(){ajax()},1000);
   </script>
+<style>
+
+
+.form{
+	position: relative;
+	left: 550px;
+	top: 0px;
+	margin-bottom: 100px;
+
+
+}
+.form input[type="text"]{
+	display:block;
+	width:20%;
+	height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	color:white;
+	background-color:#ccc;
+	background-image:none;
+	border:2px solid #78909C;
+	border-radius:3px;
+	margin-bottom: 10px;
+	opacity: .6;
+	padding-left: 30px;
+	font-weight: 600;
+
+}
+
+.form input[type="email"]{
+	display:block;
+	width:20%;
+	height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	color:white;
+	background-color:#ccc;
+	background-image:none;
+	border:2px solid #78909C;
+	border-radius:3px;
+	margin-bottom: 10px;
+	opacity: .6;
+	background:url(../store/email.png) no-repeat scroll 4px 4px;
+	background-size: 23px;
+	padding-left: 30px;
+	font-weight: 600;
+
+}
+
+.form input[type="password"]{
+	display:block;
+	width:20%;
+	position: relative;
+	bottom: 10px;
+	height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	color:white;
+	background-color:#ccc;
+	background-image:none;
+	border: 2px solid #78909C;
+	border-radius:3px;
+	margin-bottom: 10px;
+	opacity: .6;
+	background-size: 23px;
+	padding-left: 30px;
+	font-weight: 600;
+}
+
+.form input[type="submit"]{
+	position: relative;
+    background-color: rgba(255,255,255,0.1); /* Green */
+    border: none;
+    bottom: 5px;
+    color: white;
+    padding: 5px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 3px;
+    width: 270px;
+    height: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+
+.form input[type="submit"]{
+    color: #F50057;
+    border: 2px solid #F50057;
+}
+
+
+</style>
 </head>
 
 <body onload="ajax();"  class="hold-transition skin-blue sidebar-mini">
@@ -253,7 +355,7 @@ $cookie_name="loggedin";
       </form>
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
-        <li class="active"><a href="news.php"><i class="fa fa-link"></i> <span>News</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>News</span></a></li>
         <li><a href="chat.php"><i class="fa fa-link"></i> <span>Conversations</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Settings</span>
@@ -275,45 +377,33 @@ $cookie_name="loggedin";
 
     <section class="content">
 
-    <div id="container">
 
-  <div id="chat_box">
 
-    <div id="chat2">
 
+    <div class="display">
+    <form action="insert.php"  method="post" >
+    <p>
+      <label  for="fname" > News name : </label>
+      <input type="text" name="username"  required placeholder="Enter your name" id="inputid"/>
+    </p>
+    <p>
+      <label  for="lname" > Email ID : </label>
+      <input type="email" name="usermail"  required placeholder="Enter your Email" id="inputid" />
+    </p>
+    <p>
+      <label for="lname"> News text : </label>
+      <input type="text" name="usermobile" required placeholder="Enter your mobile number"  />
+    </p>
+
+    <p>
+      <input type="submit" name="send" value="Submit"  />
+    </p>
+
+
+    </form>
     </div>
-  </div>
-
-  <form method="post" action="chat.php">
-    <?php if(isset($_COOKIE[$cookie_name])){
-                      $cookie_value=$_COOKIE[$cookie_name];
-                        echo "$cookie_value";} ?>
-    <textarea name="enMes" placeholder="enter message"></textarea>
-    <input type="submit" name="submit" value="Send it"/>
-  </form>
-
-
-  <?php
-
-    if(isset($_POST['submit'])){
-      $name=$cookie_value;
-      $msg = $_POST['enMes'];
-
-      $query="INSERT INTO chat2 (name,msg) values ('$name','$msg')";
-
-      $run = mysql_query($query);
-
-      if($run){
-        echo "<embed loop='false' src='chat.wav' hidden='true' autoplay='true'/>";      }
-    }
-
-  ?>
-
-
-</div>
-
-
-        </section>
+    <?php include('view.php'); ?>
+    </section>
         <!-- /.content -->
       </div>
   <!-- /.content-wrapper -->

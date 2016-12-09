@@ -1,17 +1,9 @@
 <?php
-
-$host = "localhost";
-$dbname="logs";
-$user="root";
-$pass="";
-
-
-$con = new mysqli($host,$user,$pass,$dbname);
-
-function formatDate($date){
-	return date('g:i a',strtotime($date));
-
-}
-
-
+ob_start();
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_DATABASE', 'dtest');
+$connection = mysql_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD) or die(mysql_error());
+$database = mysql_select_db(DB_DATABASE) or die(mysql_error());
 ?>

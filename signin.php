@@ -4,9 +4,12 @@ session_start();
 $cookie_name="loggedin";
 include_once 'dbconnect.php';
 
-if(isset($_SESSION['users'])!="")
+
+
+if(isset($_SESSION['users'])==true)
 {
 	header("Location: personal.php");
+	
 }
 
 if(isset($_POST['login']))
@@ -18,12 +21,13 @@ if(isset($_POST['login']))
 	$upass = trim($upass);
 	
 	$res=mysql_query("SELECT user_name, user_pass FROM users WHERE user_name='$uname'");
-	$row=mysql_fetch_array($res);
 	
-	$count = mysql_num_rows($res); 
+	$row=mysql_fetch_array($res);	
 	
-	if($count==1 && $row['user_pass']==md5($upass))
+
+	if(mysql_num_rows($res)==1 && $row['user_pass']==md5($upass))
 	{
+
 		$cookie_value=$uname;
 		$_SESSION['users'] = $row['user_id'];
 		setcookie($cookie_name,$cookie_value,time()+(180),"/");

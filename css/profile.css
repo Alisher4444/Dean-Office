@@ -28,7 +28,7 @@
 .col-md-4-pro{
 	position: relative;
 	left: 50px;
-	bottom: 100px;	
+	bottom: 100px;
 }
 
 .img-responsive-4-pro,
@@ -42,7 +42,7 @@
   margin-right: 210px;
   height: 70px;
   margin-top: 150px;
-  
+
 }
 .img-responsive-pro,
 .thumbnail > img,
@@ -89,7 +89,7 @@
 
 }
 .Name{
-	top: 180px;	
+	top: 180px;
 	right: 258px;
 	position: relative;
 	font-size: 3rem;
@@ -102,7 +102,7 @@
 	left: 155px;
 
 	position: relative;
-	color: orange;	
+	color: orange;
 	font-size: 1.2em;
 }
 .readmore{
@@ -129,7 +129,7 @@
 	left: 35%;
 	top: 20px;
 	font: bold 1.1em "Open sans", sans-serif;
-	text-decoration: none;	
+	text-decoration: none;
 	color: #ECEFF1;
 	text-transform: uppercase;
 	position: relative;
@@ -138,7 +138,7 @@
 }
 
 .login a{
-	text-decoration: none;	
+	text-decoration: none;
 	color: #ECEFF1;
 	text-transform: uppercase;
 	left:88%;
@@ -171,7 +171,7 @@
     display: inline-block;
     font-size: 16px;
     font-weight: 600;
-    
+
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
@@ -194,7 +194,7 @@
 	border:0.1px solid #78909C;
 	border-radius:5px;
 	margin-bottom: 10px;
-	
+
 }
 .headingReg{
 	color:#CFD8DC;
@@ -206,7 +206,7 @@
 
 .id{
 	position: relative;
-	left: 100px;	
+	left: 100px;
 	top: 50px;
 
 }
@@ -221,7 +221,7 @@
 	position: relative;
 	left: 100px;
 	top: 24px;
-}	
+}
 
 .surname{
 	position: relative;
@@ -277,7 +277,7 @@
 	left: 0px;
 	top: 0px;
 
-	background-color: #F50057;	
+	background-color: #F50057;
 
 }
 
@@ -374,7 +374,7 @@
     color: white;
 }
 .footer{
-	
+
 	height: 200px;
 	width: 100%;
 	background-color: #212121;
@@ -382,7 +382,7 @@
 .under-footer{
 	background-color: #0D47A1;
 	width: 100%;
-	height: 70px;	
+	height: 70px;
 
 }
 .footer_h4{
@@ -438,7 +438,7 @@
 	width: 160px;
 	height: 160px;
 	border-radius: 50%;
-	box-shadow: 0 0 0 3px #ccc, 0 0 13px #333	
+	box-shadow: 0 0 0 3px #ccc, 0 0 13px #333
 }
 
 .round2{
@@ -448,17 +448,17 @@
 	width: 160px;
 	height: 160px;
 	border-radius: 50%;
-	box-shadow: 0 0 0 3px #ccc, 0 0 13px #333	
+	box-shadow: 0 0 0 3px #ccc, 0 0 13px #333
 }
 
 .round3{
-	position: relative;	
+	position: relative;
 	left: 550px;
 	top: 100px;
 	width: 160px;
 	height: 160px;
 	border-radius: 50%;
-	box-shadow: 0 0 0 3px #ccc, 0 0 13px #333		
+	box-shadow: 0 0 0 3px #ccc, 0 0 13px #333
 }
 
 .design h2{

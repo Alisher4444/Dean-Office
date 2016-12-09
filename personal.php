@@ -5,7 +5,7 @@ $s=$_SESSION['users'];
 if(isset($_SESSION['users']))
 {
 	header('Location: personal.php');
-	
+
 
 }
 	$c=null;
@@ -18,15 +18,18 @@ if(isset($_SESSION['users']))
 $res=mysql_query("SELECT * FROM users WHERE user_id='$s'");
 //$userRow=mysql_fetch_array($res);
 $cookie_name="loggedin";
-if(isset($_COOKIE[$cookie_name])){
-	$cookie_value=$_COOKIE[$cookie_name];
-	/*<!--echo "Welcome to your personal are $cookie_value!";
-	echo '<a href="
-  .php">Logout</a>';
-	echo "You was online : $c";-->*/
-}
 
-?><!DOCTYPE html>
+
+?>
+
+<?php
+  ini_set('mysql.connection_timeout', 300);
+  ini_set('default_socket_timeout', 300);
+
+
+?>
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -172,7 +175,9 @@ if(isset($_COOKIE[$cookie_name])){
               <!-- The user image in the navbar-->
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Muslim Sergazyev</span>
+              <span class="hidden-xs"> <?php if(isset($_COOKIE[$cookie_name])){
+                      $cookie_value=$_COOKIE[$cookie_name];
+                        echo "$cookie_value";} ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -180,7 +185,9 @@ if(isset($_COOKIE[$cookie_name])){
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Muslim Sergazyev - Dean of IT-University
+                  <?php if(isset($_COOKIE[$cookie_name])){
+                      $cookie_value=$_COOKIE[$cookie_name];
+                        echo "$cookie_value";} ?> - Dean of IT-University
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -230,7 +237,9 @@ if(isset($_COOKIE[$cookie_name])){
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Muslim Sergazyev</p>
+          <p> <?php if(isset($_COOKIE[$cookie_name])){
+                      $cookie_value=$_COOKIE[$cookie_name];
+                        echo "$cookie_value";} ?></p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Dean</a>
         </div>
@@ -252,17 +261,17 @@ if(isset($_COOKIE[$cookie_name])){
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-        <li><a href="chat.php"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li class="active"><a href="news.php"><i class="fa fa-link"></i> <span>News</span></a></li>
+        <li><a href="chat.php"><i class="fa fa-link"></i> <span>Conversations</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+          <a href="#"><i class="fa fa-link"></i> <span>Settings</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Sending Files</a></li>
+            <li><a href="addingStaff.php">Adding Staff</a></li>
           </ul>
         </li>
       </ul>

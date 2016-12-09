@@ -1,28 +1,123 @@
-<?php
-include 'dbconnect.php';
+
+
+
+
+<?php include_once 'dbconnect.php';
+
+
+if(isset($_POST['signUp']) && $_FILES['image'])
+{
+ $unamee = mysql_real_escape_string($_POST['username']);
+ $emaile = mysql_real_escape_string($_POST['email']);
+ $upasse = md5(mysql_real_escape_string($_POST['password']));
+
+ $fnamee = mysql_real_escape_string($_POST['first-name']);
+ $snamee = mysql_real_escape_string($_POST['second-name']);
+ $pine = mysql_real_escape_string($_POST['PIN']);
+ $gnamee = mysql_real_escape_string($_POST['group-name']);
+
+
+ $unamee = trim($unamee);
+ $emaile = trim($emaile);
+ $upasse = trim($upasse);
+ $fnamee = trim($fnamee);
+ $snamee = trim($snamee);
+ $pine = trim($pine);
+ $gnamee = trim($gnamee);
+
+
+
+   $errors= array();
+   $file_name = $_FILES['image']['name'];
+   $file_size =$_FILES['image']['size'];
+   $file_tmp =$_FILES['image']['tmp_name'];
+   $file_type=$_FILES['image']['type'];
+   $file_ext=strtolower(end(explode('.',$file_name)));
+
+   $expensions= array("jpeg","jpg","png");
+   if(in_array($file_ext,$expensions)=== false){
+     $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+   }
+   if($file_size > 2097152){
+   $errors[]='File size must be excately 2 MB';
+   }
+   if(empty($errors)==true){
+     move_uploaded_file($file_tmp,"images/".$file_name);
+
+   }else{
+
+   }
+
+   $file_titile = trim($file_name);
+
+
+
+ $query = "SELECT staff_email FROM staff WHERE staff_email='$email'";
+ $result = mysql_query($query);
+
+ $count = mysql_num_rows($result);
+
+ if($count == 0 ) {
+
+
+   if(mysql_query("INSERT INTO users(staff_name,staff_email,staff_pass,first_name,
+     sec_name,pin,group_name,image_name)
+      VALUES('$uname','$email','$upass','$fname','$sname',
+     '$pin','$gname','$file_titile')"))
+   {
+     ?>
+     <script>alert('successfully registered ');</script>
+     <?php
+     header("Location: personal.php");
+   }
+   else
+   {
+     ?>
+     <script>alert('error while registering you...');</script>
+     <?php
+   }
+ }
+ else{
+     ?>
+     <script>alert('Sorry Email ID already taken ...');</script>
+     <?php
+ }
+
+}
 ?>
+
+
 <?php
 session_start();
 include_once 'dbconnect.php';
 $s=$_SESSION['users'];
 if(isset($_SESSION['users']))
 {
-  header('Location: chat.php');
+	header('Location: personal.php');
 
 
 }
-  $c=null;
-  if($_SESSION['counter']){
-    $c=$_SESSION['counter']+=1;
-  }else{
-    $c=$_SESSION['counter']+=1;
-  }
+	$c=null;
+	if($_SESSION['counter']){
+		$c=$_SESSION['counter']+=1;
+	}else{
+		$c=$_SESSION['counter']+=1;
+	}
 
 $res=mysql_query("SELECT * FROM users WHERE user_id='$s'");
 //$userRow=mysql_fetch_array($res);
 $cookie_name="loggedin";
 
+
 ?>
+
+<?php
+  ini_set('mysql.connection_timeout', 300);
+  ini_set('default_socket_timeout', 300);
+
+
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -30,63 +125,48 @@ $cookie_name="loggedin";
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Dean Office</title>
-
+  <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
+  <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
-  <link rel="stylesheet" type="text/css" href="index.css">
 
-    <link rel="stylesheet" href="css/style.css">
-    <script>
-    function ajax(){
+   <link rel="stylesheet" type="text/css" href="css/addingStaff.css">
 
-      var req = new XMLHttpRequest();
-      req.onreadystatechange = function(){
-
-        if(req.readyState == 4 && req.status == 200){
-          document.getElementById('chat2').innerHTML = req.responseText;
-        }
-
-      }
-
-      req.open('GET','dialg.php',true);
-      req.send();
-
-
-    }
-    setInterval(function(){ajax()},1000);
-  </script>
 </head>
 
-<body onload="ajax();"  class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-
+  <!-- Main Header -->
   <header class="main-header">
 
-
-    <a href="personal.php" class="logo">
-
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>D</b>O</span>
-
+      <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Dean</b>Office</span>
     </a>
 
-
+    <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
-
+      <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
-
+      <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-
+          <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
-
+            <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
               <span class="label label-success">4</span>
@@ -94,33 +174,35 @@ $cookie_name="loggedin";
             <ul class="dropdown-menu">
               <li class="header">You have 4 messages</li>
               <li>
-
+                <!-- inner menu: contains the messages -->
                 <ul class="menu">
-                  <li>
+                  <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-
+                        <!-- User Image -->
                         <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
-
+                      <!-- Message title and timestamp -->
                       <h4>
                         Support Team
                         <small><i class="fa fa-clock-o"></i> 5 mins</small>
                       </h4>
-
+                      <!-- The message -->
                       <p>Why not buy a new awesome theme?</p>
                     </a>
                   </li>
-
+                  <!-- end message -->
                 </ul>
-
+                <!-- /.menu -->
               </li>
               <li class="footer"><a href="#">See All Messages</a></li>
             </ul>
           </li>
+          <!-- /.messages-menu -->
 
+          <!-- Notifications Menu -->
           <li class="dropdown notifications-menu">
-
+            <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
@@ -128,19 +210,22 @@ $cookie_name="loggedin";
             <ul class="dropdown-menu">
               <li class="header">You have 10 notifications</li>
               <li>
-
+                <!-- Inner Menu: contains the notifications -->
                 <ul class="menu">
-                  <li>
+                  <li><!-- start notification -->
                     <a href="#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>
                   </li>
+                  <!-- end notification -->
                 </ul>
               </li>
               <li class="footer"><a href="#">View all</a></li>
             </ul>
           </li>
+          <!-- Tasks Menu -->
           <li class="dropdown tasks-menu">
+            <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
               <span class="label label-danger">9</span>
@@ -148,14 +233,18 @@ $cookie_name="loggedin";
             <ul class="dropdown-menu">
               <li class="header">You have 9 tasks</li>
               <li>
+                <!-- Inner menu: contains the tasks -->
                 <ul class="menu">
                   <li><!-- Task item -->
                     <a href="#">
+                      <!-- Task title and progress text -->
                       <h3>
                         Design some buttons
                         <small class="pull-right">20%</small>
                       </h3>
+                      <!-- The progress bar -->
                       <div class="progress xs">
+                        <!-- Change the css width attribute to simulate progress -->
                         <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">20% Complete</span>
                         </div>
@@ -219,6 +308,7 @@ $cookie_name="loggedin";
               </li>
             </ul>
           </li>
+          <!-- Control Sidebar Toggle Button -->
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
@@ -226,10 +316,13 @@ $cookie_name="loggedin";
       </div>
     </nav>
   </header>
+  <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
 
+    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
+      <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
@@ -238,10 +331,12 @@ $cookie_name="loggedin";
           <p> <?php if(isset($_COOKIE[$cookie_name])){
                       $cookie_value=$_COOKIE[$cookie_name];
                         echo "$cookie_value";} ?></p>
+          <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Dean</a>
         </div>
       </div>
 
+      <!-- search form (Optional) -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -251,8 +346,12 @@ $cookie_name="loggedin";
               </span>
         </div>
       </form>
+      <!-- /.search form -->
+
+      <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
+        <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="news.php"><i class="fa fa-link"></i> <span>News</span></a></li>
         <li><a href="chat.php"><i class="fa fa-link"></i> <span>Conversations</span></a></li>
         <li class="treeview">
@@ -267,55 +366,47 @@ $cookie_name="loggedin";
           </ul>
         </li>
       </ul>
+      <!-- /.sidebar-menu -->
     </section>
+    <!-- /.sidebar -->
   </aside>
 
-
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Page Header
+        <small>Optional description</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
 
+    <!-- Main content -->
     <section class="content">
-
-    <div id="container">
-
-  <div id="chat_box">
-
-    <div id="chat2">
-
-    </div>
-  </div>
-
-  <form method="post" action="chat.php">
-    <?php if(isset($_COOKIE[$cookie_name])){
-                      $cookie_value=$_COOKIE[$cookie_name];
-                        echo "$cookie_value";} ?>
-    <textarea name="enMes" placeholder="enter message"></textarea>
-    <input type="submit" name="submit" value="Send it"/>
-  </form>
+      <div class="form">
 
 
-  <?php
-
-    if(isset($_POST['submit'])){
-      $name=$cookie_value;
-      $msg = $_POST['enMes'];
-
-      $query="INSERT INTO chat2 (name,msg) values ('$name','$msg')";
-
-      $run = mysql_query($query);
-
-      if($run){
-        echo "<embed loop='false' src='chat.wav' hidden='true' autoplay='true'/>";      }
-    }
-
-  ?>
-
-
-</div>
-
-
-        </section>
-        <!-- /.content -->
+       <form action="signup.php" method="POST" enctype="multipart/form-data">
+         <input type="text" name="username" placeholder="Login" required><br>
+         <input type="password" name="password" placeholder="Password" required><br>
+         <input type="text" name="f_name" placeholder="First name" class="f_name" required><br>
+         <input type="text" name="s_name" placeholder="Second name" required><br>
+         <input type="text" name="g_name" placeholder="Group name" required><br>
+         <input type="email" name="email" placeholder="Email" required><br>
+         <input type="text" name="iin" placeholder="Personal Identification Number" required><br>
+         <input type="file" name="image"><br>
+         <input type="submit" name="signUp" value="Sign Up" >
+       </form>
       </div>
+
+
+    </section>
+    <!-- /.content -->
+  </div>
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
@@ -353,7 +444,7 @@ $cookie_name="loggedin";
             </a>
           </li>
         </ul>
-
+        <!-- /.control-sidebar-menu -->
 
         <h3 class="control-sidebar-heading">Tasks Progress</h3>
         <ul class="control-sidebar-menu">
@@ -372,7 +463,7 @@ $cookie_name="loggedin";
             </a>
           </li>
         </ul>
-
+        <!-- /.control-sidebar-menu -->
 
       </div>
       <!-- /.tab-pane -->
@@ -415,10 +506,6 @@ $cookie_name="loggedin";
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/nicescroll/3.5.4/jquery.nicescroll.js'></script>
-
-            <script src="js/index.js"></script>
 
 </body>
 </html>
